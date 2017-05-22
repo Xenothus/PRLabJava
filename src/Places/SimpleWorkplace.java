@@ -28,7 +28,6 @@ abstract public class SimpleWorkplace {
             return 0;
         }
 
-        System.out.println(productStorage);
         productStorage -= units;
         return units;
     }

@@ -59,7 +59,7 @@ abstract public class ComplexWorkplace {
             return product1Storage;
         }
     }
-
+    
     protected int takeProduct2(int units)
     {
         synchronized (product2StorageLock)

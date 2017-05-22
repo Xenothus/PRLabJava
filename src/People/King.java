@@ -14,6 +14,7 @@ public class King extends Person {
 
         waterConsumption = 5;
         foodConsumption = 5;
+        productionSpeed = 1;
     }
 
     public King(int initialHappiness,
