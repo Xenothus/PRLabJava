@@ -5,7 +5,7 @@ abstract public class SimpleWorkplace {
     protected int productStorage = 0;
     protected int lastProductDemand = 0;
 
-    private static final Object lastProductDemandLock = new Object();
+    protected final Object lastProductDemandLock = new Object();
 
     protected void init()
     {
@@ -13,7 +13,7 @@ abstract public class SimpleWorkplace {
         lastProductDemand = 0;
     }
 
-    public synchronized int takeProduct(int units)
+    protected synchronized int takeProduct(int units)
     {
         try
         {
@@ -28,11 +28,12 @@ abstract public class SimpleWorkplace {
             return 0;
         }
 
+        System.out.println(productStorage);
         productStorage -= units;
         return units;
     }
 
-    public synchronized void putProduct(int units)
+    protected synchronized void putProduct(int units)
     {
         productStorage += units;
         if (productStorage >= getLastProductDemand())
