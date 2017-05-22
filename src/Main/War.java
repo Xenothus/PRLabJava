@@ -35,7 +35,7 @@ public class War implements Runnable {
         {
             fight();
             power = (army.getMorales() + army.getStrength()) / 2;
-            System.out.println("Army power: " + power);
+            System.out.print("\rArmy power: " + power);
 
             if (power > enemyPower)
             {
