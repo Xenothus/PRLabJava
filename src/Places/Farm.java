@@ -1,6 +1,6 @@
 package Places;
 
-public class Farm extends Workplace {
+public class Farm extends ComplexWorkplace {
 
     private static class SingletonHelper {
         private static final Farm instance = new Farm();

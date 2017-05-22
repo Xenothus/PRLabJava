@@ -1,6 +1,6 @@
 package Places;
 
-public class Weaponry extends Workplace {
+public class Weaponry extends ComplexWorkplace {
 
     private static class SingletonHelper {
         private static final Weaponry instance = new Weaponry();

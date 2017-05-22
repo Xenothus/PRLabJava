@@ -1,6 +1,6 @@
 package Places;
 
-public class Mine extends Workplace {
+public class Mine extends ComplexWorkplace {
 
     private static class SingletonHelper {
         private static final Mine instance = new Mine();

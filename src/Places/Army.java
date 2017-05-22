@@ -1,6 +1,6 @@
 package Places;
 
-public class Army extends Workplace {
+public class Army extends ComplexWorkplace {
 
     private static class SingletonHelper {
         private static final Army instance = new Army();

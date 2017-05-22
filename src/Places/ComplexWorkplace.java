@@ -1,6 +1,6 @@
 package Places;
 
-abstract public class Workplace {
+abstract public class ComplexWorkplace {
 
     protected int product1Storage;
     protected int product2Storage;

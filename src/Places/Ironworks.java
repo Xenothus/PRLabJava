@@ -1,6 +1,6 @@
 package Places;
 
-public class Ironworks extends Workplace {
+public class Ironworks extends ComplexWorkplace {
 
     private static class SingletonHelper {
         private static final Ironworks instance = new Ironworks();
