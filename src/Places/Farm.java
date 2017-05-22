@@ -6,7 +6,10 @@ public class Farm extends ComplexWorkplace {
         private static final Farm instance = new Farm();
     }
 
-    private Farm(){}
+    private Farm()
+    {
+        super.init();
+    }
 
     public static Farm getInstance()
     {

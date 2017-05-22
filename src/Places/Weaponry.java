@@ -6,7 +6,10 @@ public class Weaponry extends SimpleWorkplace {
         private static final Weaponry instance = new Weaponry();
     }
 
-    private Weaponry(){}
+    private Weaponry()
+    {
+        super.init();
+    }
 
     public static Weaponry getInstance()
     {

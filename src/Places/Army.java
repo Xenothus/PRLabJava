@@ -6,7 +6,10 @@ public class Army extends ComplexWorkplace {
         private static final Army instance = new Army();
     }
 
-    private Army(){}
+    private Army()
+    {
+        super.init();
+    }
 
     public static Army getInstance()
     {
