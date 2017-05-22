@@ -2,8 +2,8 @@ package Places;
 
 abstract public class SimpleWorkplace {
 
-    protected int productStorage = 0;
-    protected int lastProductDemand = 0;
+    protected int productStorage;
+    protected int lastProductDemand;
 
     protected final Object lastProductDemandLock = new Object();
 
