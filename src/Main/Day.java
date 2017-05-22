@@ -11,7 +11,12 @@ public class Day implements Runnable {
 
     private Day()
     {
-        duration = 100;
+        duration = 10;
+    }
+
+    public static Day getInstance()
+    {
+        return SingletonHelper.instance;
     }
 
     @Override
