@@ -18,27 +18,29 @@ public class IronWorker extends Person {
 
         waterConsumption = 1;
         foodConsumption = 1;
-        coalDemand = 1;
-        ironOreDemand = 1;
         productionSpeed = 1;
         productionAmount = 100;
+
+        coalDemand = 1;
+        ironOreDemand = 1;
     }
 
     public IronWorker(int waterConsumption,
                       int foodConsumption,
-                      int coalDemand,
-                      int ironOreDemand,
                       int productionSpeed,
-                      int productionAmount)
+                      int productionAmount,
+                      int coalDemand,
+                      int ironOreDemand)
     {
         myID = ID++;
 
         this.waterConsumption = waterConsumption;
         this.foodConsumption = foodConsumption;
-        this.coalDemand = coalDemand;
-        this.ironOreDemand = ironOreDemand;
         this.productionSpeed = productionSpeed;
         this.productionAmount = productionAmount;
+
+        this.coalDemand = coalDemand;
+        this.ironOreDemand = ironOreDemand;
     }
 
     @Override
