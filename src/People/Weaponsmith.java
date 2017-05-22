@@ -17,24 +17,26 @@ public class Weaponsmith extends Person implements Runnable {
 
         waterConsumption = 1;
         foodConsumption = 1;
-        ironBarsDemand = 1;
         productionSpeed = 1;
         productionAmount = 100;
+
+        ironBarsDemand = 1;
     }
 
     public Weaponsmith(int waterConsumption,
                        int foodConsumption,
-                       int ironBarsDemand,
                        int productionSpeed,
-                       int productionAmount)
+                       int productionAmount,
+                       int ironBarsDemand)
     {
         myID = ID++;
 
         this.waterConsumption = waterConsumption;
         this.foodConsumption = foodConsumption;
-        this.ironBarsDemand = ironBarsDemand;
         this.productionSpeed = productionSpeed;
         this.productionAmount = productionAmount;
+
+        this.ironBarsDemand = ironBarsDemand;
     }
 
     @Override

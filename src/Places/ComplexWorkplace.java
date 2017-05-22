@@ -1,6 +1,6 @@
 package Places;
 
-abstract public class Workplace {
+abstract public class ComplexWorkplace {
 
     protected int product1Storage;
     protected int product2Storage;
@@ -59,7 +59,7 @@ abstract public class Workplace {
             return product1Storage;
         }
     }
-
+    
     protected int takeProduct2(int units)
     {
         synchronized (product2StorageLock)

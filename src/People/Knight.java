@@ -17,24 +17,26 @@ public class Knight extends Person {
 
         waterConsumption = 1;
         foodConsumption = 1;
-        weaponDemand = 1;
         productionSpeed = 1;
         productionAmount = 100;
+
+        weaponDemand = 1;
     }
 
     public Knight(int waterConsumption,
                   int foodConsumption,
-                  int weaponDemand,
                   int productionSpeed,
-                  int productionAmount)
+                  int productionAmount,
+                  int weaponDemand)
     {
         myID = ID++;
 
         this.waterConsumption = waterConsumption;
         this.foodConsumption = foodConsumption;
-        this.weaponDemand = weaponDemand;
         this.productionSpeed = productionSpeed;
         this.productionAmount = productionAmount;
+
+        this.weaponDemand = weaponDemand;
     }
 
     @Override

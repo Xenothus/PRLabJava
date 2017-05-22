@@ -10,20 +10,21 @@ public class King extends Person {
 
     public King()
     {
-        happiness = 0;
-
         waterConsumption = 5;
         foodConsumption = 5;
+        productionSpeed = 1;
+
+        happiness = 0;
     }
 
-    public King(int initialHappiness,
-                int waterConsumption,
-                int foodConsumption)
+    public King(int waterConsumption,
+                int foodConsumption,
+                int initialHappiness)
     {
-        this.happiness = initialHappiness;
-
         this.waterConsumption = waterConsumption;
         this.foodConsumption = foodConsumption;
+
+        this.happiness = initialHappiness;
     }
 
     @Override

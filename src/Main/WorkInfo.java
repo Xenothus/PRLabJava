@@ -1,8 +1,5 @@
 package Main;
 
-/**
- * Created by Oem on 2017-05-22.
- */
 public class WorkInfo {
 
     private boolean isOrdered;

@@ -1,8 +1,5 @@
 package Main;
 
-/**
- * Created by Oem on 2017-05-22.
- */
 public class Day implements Runnable {
 
     private final DayInfo day = DayInfo.getInstance();
@@ -14,7 +11,12 @@ public class Day implements Runnable {
 
     private Day()
     {
-        duration = 100;
+        duration = 10;
+    }
+
+    public static Day getInstance()
+    {
+        return SingletonHelper.instance;
     }
 
     @Override

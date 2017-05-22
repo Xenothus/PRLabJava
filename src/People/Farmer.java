@@ -38,7 +38,6 @@ public class Farmer extends Person {
         while (day.isLasting() && work.isOrdered())
         {
             sowPlants();
-            eat();
             drink();
         }
     }

@@ -1,11 +1,16 @@
 package People;
 
 import Places.Ironworks;
+import Places.Mine;
 
 public class IronWorker extends Person {
 
     private static int ID = 0;
     private final Ironworks ironworks = Ironworks.getInstance();
+    private final Mine mine = Mine.getInstance();
+
+    private int coalDemand;
+    private int ironOreDemand;
 
     public IronWorker()
     {
@@ -15,12 +20,17 @@ public class IronWorker extends Person {
         foodConsumption = 1;
         productionSpeed = 1;
         productionAmount = 100;
+
+        coalDemand = 1;
+        ironOreDemand = 1;
     }
 
     public IronWorker(int waterConsumption,
                       int foodConsumption,
                       int productionSpeed,
-                      int productionAmount)
+                      int productionAmount,
+                      int coalDemand,
+                      int ironOreDemand)
     {
         myID = ID++;
 
@@ -28,6 +38,9 @@ public class IronWorker extends Person {
         this.foodConsumption = foodConsumption;
         this.productionSpeed = productionSpeed;
         this.productionAmount = productionAmount;
+
+        this.coalDemand = coalDemand;
+        this.ironOreDemand = ironOreDemand;
     }
 
     @Override
@@ -45,6 +58,8 @@ public class IronWorker extends Person {
 
     private void forgeIronBars()
     {
+        mine.takeCoal(coalDemand);
+        mine.takeIronOre(ironOreDemand);
         work();
         ironworks.putIronBars(productionAmount);
     }
