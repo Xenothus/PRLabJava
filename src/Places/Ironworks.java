@@ -1,6 +1,6 @@
 package Places;
 
-public class Ironworks extends ComplexWorkplace {
+public class Ironworks extends SimpleWorkplace {
 
     private static class SingletonHelper {
         private static final Ironworks instance = new Ironworks();
@@ -18,11 +18,11 @@ public class Ironworks extends ComplexWorkplace {
 
     public int takeIronBars(int units)
     {
-        return super.takeProduct1(units);
+        return super.takeProduct(units);
     }
 
     public void putIronBars(int units)
     {
-        super.putProduct1(units);
+        super.putProduct(units);
     }
 }

@@ -1,6 +1,6 @@
 package Places;
 
-public class Weaponry extends ComplexWorkplace {
+public class Weaponry extends SimpleWorkplace {
 
     private static class SingletonHelper {
         private static final Weaponry instance = new Weaponry();
@@ -15,11 +15,11 @@ public class Weaponry extends ComplexWorkplace {
 
     public int takeWeapons(int units)
     {
-        return super.takeProduct1(units);
+        return super.takeProduct(units);
     }
 
     public void putWeapons(int units)
     {
-        super.putProduct1(units);
+        super.putProduct(units);
     }
 }
