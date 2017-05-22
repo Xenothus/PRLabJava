@@ -26,6 +26,8 @@ public class IronWorker extends Person {
 
     public IronWorker(int waterConsumption,
                       int foodConsumption,
+                      int coalDemand,
+                      int ironOreDemand,
                       int productionSpeed,
                       int productionAmount)
     {
@@ -33,6 +35,8 @@ public class IronWorker extends Person {
 
         this.waterConsumption = waterConsumption;
         this.foodConsumption = foodConsumption;
+        this.coalDemand = coalDemand;
+        this.ironOreDemand = ironOreDemand;
         this.productionSpeed = productionSpeed;
         this.productionAmount = productionAmount;
     }
