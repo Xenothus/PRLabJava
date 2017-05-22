@@ -39,7 +39,6 @@ public class WaterCollector extends Person {
         {
             collectWater();
             eat();
-            drink();
         }
     }
 
