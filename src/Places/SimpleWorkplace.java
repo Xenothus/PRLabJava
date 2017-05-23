@@ -1,16 +1,18 @@
 package Places;
 
+import Main.Queue;
+
 abstract public class SimpleWorkplace {
 
     protected int productStorage;
-    protected int lastProductDemand;
+    protected Queue productDemand;
 
-    protected final Object lastProductDemandLock = new Object();
+    protected final Object productDemandLock = new Object();
 
     protected void init()
     {
         productStorage = 0;
-        lastProductDemand = 0;
+        productDemand = new Queue();
     }
 
     protected synchronized int takeProduct(int units)
@@ -19,7 +21,7 @@ abstract public class SimpleWorkplace {
         {
             if (units > productStorage)
             {
-                setLastProductDemand(units);
+                pushProductDemand(units);
                 wait();
             }
         }
@@ -35,23 +37,31 @@ abstract public class SimpleWorkplace {
     protected synchronized void putProduct(int units)
     {
         productStorage += units;
-        if (productStorage >= getLastProductDemand())
-            notify();
-    }
-
-    private int getLastProductDemand()
-    {
-        synchronized (lastProductDemandLock)
+        if (productStorage >= getProductDemand())
         {
-            return lastProductDemand;
+            productDemand.pop();
+            notify();
         }
     }
 
-    private void setLastProductDemand(int input)
+    protected synchronized int getProductStorageValue()
     {
-        synchronized (lastProductDemandLock)
+        return productStorage;
+    }
+
+    private int getProductDemand()
+    {
+        synchronized (productDemandLock)
         {
-            lastProductDemand = input;
+            return productDemand.getFirst();
+        }
+    }
+
+    private void pushProductDemand(int input)
+    {
+        synchronized (productDemandLock)
+        {
+            productDemand.push(input);
         }
     }
 }

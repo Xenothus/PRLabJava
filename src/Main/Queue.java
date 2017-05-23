@@ -23,4 +23,9 @@ public class Queue {
         list.remove(0);
         return result;
     }
+
+    public int getFirst()
+    {
+        return list.get(0);
+    }
 }
