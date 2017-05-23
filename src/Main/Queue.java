@@ -19,13 +19,21 @@ public class Queue {
 
     public int pop()
     {
-        int result = list.get(0);
-        list.remove(0);
+        int result = 0;
+        if (!list.isEmpty())
+        {
+            result = list.get(0);
+            list.remove(0);
+        }
+
         return result;
     }
 
     public int getFirst()
     {
-        return list.get(0);
+        if (!list.isEmpty())
+            return list.get(0);
+
+        return 0;
     }
 }
