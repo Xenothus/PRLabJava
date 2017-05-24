@@ -1,23 +1,25 @@
 package Places;
 
+import Main.Queue;
+
 abstract public class ComplexWorkplace {
 
     protected int product1Storage;
     protected int product2Storage;
-    protected int lastProduct1Demand;
-    protected int lastProduct2Demand;
+    protected Queue product1Demand;
+    protected Queue product2Demand;
 
     protected final Object product1StorageLock = new Object();
     protected final Object product2StorageLock = new Object();
-    protected final Object lastProduct1DemandLock = new Object();
-    protected final Object lastProduct2DemandLock = new Object();
+    protected final Object product1DemandLock = new Object();
+    protected final Object product2DemandLock = new Object();
 
     protected void init()
     {
         product1Storage = 0;
         product2Storage = 0;
-        lastProduct1Demand = 0;
-        lastProduct2Demand = 0;
+        product1Demand = new Queue();
+        product2Demand = new Queue();
     }
 
     protected int takeProduct1(int units)
@@ -28,7 +30,7 @@ abstract public class ComplexWorkplace {
             {
                 if (units > product1Storage)
                 {
-                    setLastProduct1Demand(units);
+                    pushProduct1Demand(units);
                     product1StorageLock.wait();
                 }
             }
@@ -47,8 +49,11 @@ abstract public class ComplexWorkplace {
         synchronized (product1StorageLock)
         {
             product1Storage += units;
-            if (product1Storage >= getLastProduct1Demand())
+            if (product1Storage >= getProduct1Demand())
+            {
+                product1Demand.pop();
                 product1StorageLock.notify();
+            }
         }
     }
 
@@ -68,7 +73,7 @@ abstract public class ComplexWorkplace {
             {
                 if (units > product2Storage)
                 {
-                    setLastProduct2Demand(units);
+                    pushProduct2Demand(units);
                     product2StorageLock.wait();
                 }
             }
@@ -87,7 +92,7 @@ abstract public class ComplexWorkplace {
         synchronized (product2StorageLock)
         {
             product2Storage += units;
-            if (product2Storage >= getLastProduct2Demand())
+            if (product2Storage >= getProduct2Demand())
                 product2StorageLock.notify();
         }
     }
@@ -100,35 +105,35 @@ abstract public class ComplexWorkplace {
         }
     }
 
-    protected int getLastProduct1Demand()
+    protected int getProduct1Demand()
     {
-        synchronized (lastProduct1DemandLock)
+        synchronized (product1DemandLock)
         {
-            return lastProduct1Demand;
+            return product1Demand.getFirst();
         }
     }
 
-    protected void setLastProduct1Demand(int input)
+    protected void pushProduct1Demand(int input)
     {
-        synchronized (lastProduct1DemandLock)
+        synchronized (product1DemandLock)
         {
-            lastProduct1Demand = input;
+            product1Demand.push(input);
         }
     }
 
-    protected int getLastProduct2Demand()
+    protected int getProduct2Demand()
     {
-        synchronized (lastProduct2DemandLock)
+        synchronized (product2DemandLock)
         {
-            return lastProduct2Demand;
+            return product2Demand.getFirst();
         }
     }
 
-    protected void setLastProduct2Demand(int input)
+    protected void pushProduct2Demand(int input)
     {
-        synchronized (lastProduct2DemandLock)
+        synchronized (product2DemandLock)
         {
-            lastProduct2Demand = input;
+            product2Demand.push(input);
         }
     }
 
