@@ -6,7 +6,8 @@ public class King extends Person {
 
     private final Army army = Army.getInstance();
 
-    private int happiness;
+    private int happiness;      // percentage
+    private int happinessStep;
 
     public King()
     {
@@ -15,16 +16,19 @@ public class King extends Person {
         productionSpeed = 1;
 
         happiness = 0;
+        happinessStep = 1;
     }
 
     public King(int waterConsumption,
                 int foodConsumption,
-                int initialHappiness)
+                int initialHappiness,
+                int happinessPerLoop)
     {
         this.waterConsumption = waterConsumption;
         this.foodConsumption = foodConsumption;
 
         this.happiness = initialHappiness;
+        this.happinessStep = happinessPerLoop;
     }
 
     @Override
@@ -38,13 +42,13 @@ public class King extends Person {
             eat();
             drink();
 
-            happiness++;
+            happiness = (happiness < 100) ? happiness + happinessStep : 100;
         }
     }
 
     private void giveMoralesToArmy()
     {
         work();
-        army.putMorales(happiness);
+        army.setMorales(happiness);
     }
 }

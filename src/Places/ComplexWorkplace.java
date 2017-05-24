@@ -64,6 +64,14 @@ abstract public class ComplexWorkplace {
             return product1Storage;
         }
     }
+
+    protected void setProduct1StorageValue(int units)
+    {
+        synchronized (product1StorageLock)
+        {
+            product1Storage = units;
+        }
+    }
     
     protected int takeProduct2(int units)
     {
@@ -102,6 +110,14 @@ abstract public class ComplexWorkplace {
         synchronized (product2StorageLock)
         {
             return product2Storage;
+        }
+    }
+
+    protected void setProduct2StorageValue(int units)
+    {
+        synchronized (product2StorageLock)
+        {
+            product2Storage = units;
         }
     }
 

@@ -49,6 +49,11 @@ abstract public class SimpleWorkplace {
         return productStorage;
     }
 
+    protected synchronized void setProductStorageValue(int units)
+    {
+        productStorage = units;
+    }
+
     private int getProductDemand()
     {
         synchronized (productDemandLock)

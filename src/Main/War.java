@@ -7,8 +7,8 @@ public class War implements Runnable {
     private final Army army = Army.getInstance();
 
     private double battleDuration;  // in seconds
-    private double power;           // in units
-    private double enemyPower;      // in units
+    private int power;           // in units
+    private int enemyPower;      // in units
 
     private static class SingletonHelper {
         private static final War instance = new War();
@@ -34,7 +34,7 @@ public class War implements Runnable {
         while (true)
         {
             fight();
-            power = (army.getMorales() + army.getStrength()) / 2;
+            power = (int)(((double)army.getMorales() / 100.0) * (double)army.getStrength());
             System.out.println("Army power: " + power);
 
             if (power > enemyPower)
