@@ -85,7 +85,7 @@ abstract public class ComplexWorkplace {
         synchronized (product1StorageLock)
         {
             isProduct1StorageOpen = false;
-            notifyAll();
+            product1StorageLock.notifyAll();
         }
     }
     
@@ -145,7 +145,7 @@ abstract public class ComplexWorkplace {
         synchronized (product2StorageLock)
         {
             isProduct2StorageOpen = false;
-            notifyAll();
+            product1StorageLock.notifyAll();
         }
     }
 
