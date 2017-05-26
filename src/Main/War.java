@@ -7,8 +7,8 @@ public class War implements Runnable {
     private final Army army = Army.getInstance();
 
     private double battleDuration;  // in seconds
-    private int power;           // in units
-    private int enemyPower;      // in units
+    private int power;              // in units
+    private int enemyPower;         // in units
 
     private static class SingletonHelper {
         private static final War instance = new War();

@@ -8,6 +8,8 @@ abstract public class ComplexWorkplace {
     protected int product2Storage;
     protected Queue product1Demand;
     protected Queue product2Demand;
+    protected boolean isProduct1StorageOpen;
+    protected boolean isProduct2StorageOpen;
 
     protected final Object product1StorageLock = new Object();
     protected final Object product2StorageLock = new Object();
@@ -20,6 +22,8 @@ abstract public class ComplexWorkplace {
         product2Storage = 0;
         product1Demand = new Queue();
         product2Demand = new Queue();
+        isProduct1StorageOpen = true;
+        isProduct2StorageOpen = true;
     }
 
     protected int takeProduct1(int units)
@@ -38,6 +42,9 @@ abstract public class ComplexWorkplace {
                 e.printStackTrace();
                 return 0;
             }
+
+            if (isProduct1StorageOpen)
+                return 0;
 
             product1Storage -= units;
             return units;
@@ -72,6 +79,15 @@ abstract public class ComplexWorkplace {
             product1Storage = units;
         }
     }
+
+    protected void closeProduct1Storage()
+    {
+        synchronized (product1StorageLock)
+        {
+            isProduct1StorageOpen = false;
+            notifyAll();
+        }
+    }
     
     protected int takeProduct2(int units)
     {
@@ -90,6 +106,9 @@ abstract public class ComplexWorkplace {
                 return 0;
             }
         }
+
+        if (isProduct2StorageOpen)
+            return 0;
 
         product2Storage -= units;
         return units;
@@ -118,6 +137,15 @@ abstract public class ComplexWorkplace {
         synchronized (product2StorageLock)
         {
             product2Storage = units;
+        }
+    }
+
+    protected void closeProduct2Storage()
+    {
+        synchronized (product2StorageLock)
+        {
+            isProduct2StorageOpen = false;
+            notifyAll();
         }
     }
 

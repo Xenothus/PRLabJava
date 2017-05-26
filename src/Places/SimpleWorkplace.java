@@ -6,6 +6,7 @@ abstract public class SimpleWorkplace {
 
     protected int productStorage;
     protected Queue productDemand;
+    protected boolean isProductStorageOpen;
 
     protected final Object productDemandLock = new Object();
 
@@ -13,6 +14,7 @@ abstract public class SimpleWorkplace {
     {
         productStorage = 0;
         productDemand = new Queue();
+        isProductStorageOpen = true;
     }
 
     protected synchronized int takeProduct(int units)
@@ -29,6 +31,9 @@ abstract public class SimpleWorkplace {
             e.printStackTrace();
             return 0;
         }
+
+        if (!isProductStorageOpen)
+            return 0;
 
         productStorage -= units;
         return units;
@@ -52,6 +57,12 @@ abstract public class SimpleWorkplace {
     protected synchronized void setProductStorageValue(int units)
     {
         productStorage = units;
+    }
+
+    protected synchronized void closeProductStorage()
+    {
+        isProductStorageOpen = false;
+        notifyAll();
     }
 
     private int getProductDemand()
