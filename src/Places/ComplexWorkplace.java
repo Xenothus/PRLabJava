@@ -43,7 +43,7 @@ abstract public class ComplexWorkplace {
                 return 0;
             }
 
-            if (isProduct1StorageOpen)
+            if (!isProduct1StorageOpen)
                 return 0;
 
             product1Storage -= units;
@@ -107,7 +107,7 @@ abstract public class ComplexWorkplace {
             }
         }
 
-        if (isProduct2StorageOpen)
+        if (!isProduct2StorageOpen)
             return 0;
 
         product2Storage -= units;

@@ -18,7 +18,7 @@ public class War implements Runnable {
     {
         battleDuration = 1;
         power = 0;
-        enemyPower = 100000;
+        enemyPower = 100;
     }
 
     public static War getInstance()
