@@ -19,7 +19,7 @@ abstract public class SimpleWorkplace {
     {
         try
         {
-            if (units > productStorage)
+            if (units > productStorage && !productDemand.isEmpty())
             {
                 pushProductDemand(units);
                 wait();
@@ -47,6 +47,11 @@ abstract public class SimpleWorkplace {
     protected synchronized int getProductStorageValue()
     {
         return productStorage;
+    }
+
+    protected synchronized void setProductStorageValue(int units)
+    {
+        productStorage = units;
     }
 
     private int getProductDemand()

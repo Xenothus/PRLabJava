@@ -36,4 +36,9 @@ public class Queue {
 
         return 0;
     }
+
+    public boolean isEmpty()
+    {
+        return list.isEmpty();
+    }
 }
