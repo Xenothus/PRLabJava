@@ -19,7 +19,7 @@ abstract public class SimpleWorkplace {
     {
         try
         {
-            if (units > productStorage)
+            if (units > productStorage && !productDemand.isEmpty())
             {
                 pushProductDemand(units);
                 wait();
