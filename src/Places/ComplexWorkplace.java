@@ -28,7 +28,7 @@ abstract public class ComplexWorkplace {
         {
             try
             {
-                if (units > product1Storage  && !product1Demand.isEmpty())
+                if (units > product1Storage || !product1Demand.isEmpty())
                 {
                     pushProduct1Demand(units);
                     product1StorageLock.wait();
@@ -79,7 +79,7 @@ abstract public class ComplexWorkplace {
         {
             try
             {
-                if (units > product2Storage && !product2Demand.isEmpty())
+                if (units > product2Storage || !product2Demand.isEmpty())
                 {
                     pushProduct2Demand(units);
                     product2StorageLock.wait();
