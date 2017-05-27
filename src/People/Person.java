@@ -44,4 +44,9 @@ abstract public class Person implements Runnable {
     {
         System.out.println(getClass().getSimpleName() + " " + myID + " started working");
     }
+
+    protected void reportWorkFinished()
+    {
+        System.out.println(getClass().getSimpleName() + " " + myID + " finished work");
+    }
 }

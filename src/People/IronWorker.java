@@ -57,8 +57,9 @@ public class IronWorker extends Person {
             System.out.println("OK");
         }
 
-        ironworks.closeStorages();
-        System.out.println("Irone End work");
+        ironworks.closeIronBarsStorage();
+
+        reportWorkFinished();
     }
 
     private void forgeIronBars()

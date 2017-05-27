@@ -16,14 +16,10 @@ public class Mine extends ComplexWorkplace {
         return SingletonHelper.instance;
     }
 
+
     public int takeCoal(int units)
     {
         return super.takeProduct1(units);
-    }
-
-    public void putCoal(int units)
-    {
-        super.putProduct1(units);
     }
 
     public int takeIronOre(int units)
@@ -31,14 +27,25 @@ public class Mine extends ComplexWorkplace {
         return super.takeProduct2(units);
     }
 
+
+    public void putCoal(int units)
+    {
+        super.putProduct1(units);
+    }
+
     public void putIronOre(int units)
     {
         super.putProduct2(units);
     }
 
-    public void closeStorages()
+
+    public void closeCoalStorage()
     {
         super.closeProduct1Storage();
+    }
+
+    public void closeIronOreStorage()
+    {
         super.closeProduct2Storage();
     }
 }

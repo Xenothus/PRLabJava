@@ -41,8 +41,10 @@ public class Farmer extends Person {
             drink();
         }
 
-        farm.closeStorages();
-        System.out.println("Farme End work");
+        farm.closeCerealStorage();
+        farm.closePotatoesStorage();
+
+        reportWorkFinished();
     }
 
     private void sowPlants()

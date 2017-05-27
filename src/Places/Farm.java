@@ -16,14 +16,10 @@ public class Farm extends ComplexWorkplace {
         return SingletonHelper.instance;
     }
 
+
     public int takeCereal(int units)
     {
         return super.takeProduct1(units);
-    }
-
-    public void putCereal(int units)
-    {
-        super.putProduct1(units);
     }
 
     public int takePotatoes(int units)
@@ -31,14 +27,25 @@ public class Farm extends ComplexWorkplace {
         return super.takeProduct2(units);
     }
 
+
+    public void putCereal(int units)
+    {
+        super.putProduct1(units);
+    }
+
     public void putPotatoes(int units)
     {
         super.putProduct2(units);
     }
 
-    public void closeStorages()
+
+    public void closeCerealStorage()
     {
         super.closeProduct1Storage();
-        super.closeProduct2Storage();
+    }
+
+    public void closePotatoesStorage()
+    {
+        super.closeProduct1Storage();
     }
 }

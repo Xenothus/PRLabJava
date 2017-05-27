@@ -48,8 +48,10 @@ public class Miner extends Person {
             System.out.println("One");
         }
 
-        mine.closeStorages();
-        System.out.println("Mine End work");
+        mine.closeCoalStorage();
+        mine.closeIronOreStorage();
+
+        reportWorkFinished();
     }
 
     private void collectCoal()
