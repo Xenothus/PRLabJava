@@ -11,7 +11,7 @@ public class Day implements Runnable {
 
     private Day()
     {
-        duration = 10;
+        duration = 5;
     }
 
     public static Day getInstance()
@@ -30,5 +30,7 @@ public class Day implements Runnable {
         catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        System.out.println("Dzionek sie wziol skonczyl");
     }
 }

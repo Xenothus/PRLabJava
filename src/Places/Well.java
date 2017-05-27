@@ -25,4 +25,9 @@ public class Well extends SimpleWorkplace {
     {
         super.putProduct(units);
     }
+
+    public void closeStorage()
+    {
+        super.closeProductStorage();
+    }
 }

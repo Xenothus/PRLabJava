@@ -53,7 +53,12 @@ public class IronWorker extends Person {
             forgeIronBars();
             eat();
             drink();
+
+            System.out.println("OK");
         }
+
+        ironworks.closeStorages();
+        System.out.println("Irone End work");
     }
 
     private void forgeIronBars()

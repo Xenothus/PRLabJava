@@ -36,4 +36,9 @@ public class Mine extends ComplexWorkplace {
         super.putProduct2(units);
     }
 
+    public void closeStorages()
+    {
+        super.closeProduct1Storage();
+        super.closeProduct2Storage();
+    }
 }

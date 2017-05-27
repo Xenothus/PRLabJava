@@ -21,6 +21,9 @@ abstract public class SimpleWorkplace {
     {
         try
         {
+            if (!isProductStorageOpen)
+                return 0;
+
             if (units > productStorage || !productDemand.isEmpty())
             {
                 pushProductDemand(units);

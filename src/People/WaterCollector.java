@@ -40,6 +40,9 @@ public class WaterCollector extends Person {
             collectWater();
             eat();
         }
+
+        well.closeStorage();
+        System.out.println("Watore End work");
     }
 
     private void collectWater()

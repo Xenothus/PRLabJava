@@ -30,6 +30,9 @@ abstract public class ComplexWorkplace {
     {
         synchronized (product1StorageLock)
         {
+            if (!isProduct1StorageOpen)
+                return 0;
+
             try
             {
                 if (units > product1Storage || !product1Demand.isEmpty())
@@ -93,6 +96,9 @@ abstract public class ComplexWorkplace {
     {
         synchronized (product2StorageLock)
         {
+            if (!isProduct2StorageOpen)
+                return 0;
+
             try
             {
                 if (units > product2Storage || !product2Demand.isEmpty())
@@ -145,7 +151,7 @@ abstract public class ComplexWorkplace {
         synchronized (product2StorageLock)
         {
             isProduct2StorageOpen = false;
-            product1StorageLock.notifyAll();
+            product2StorageLock.notifyAll();
         }
     }
 

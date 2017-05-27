@@ -25,4 +25,9 @@ public class Ironworks extends SimpleWorkplace {
     {
         super.putProduct(units);
     }
+
+    public void closeStorages()
+    {
+        super.closeProductStorage();
+    }
 }
