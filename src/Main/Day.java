@@ -22,15 +22,16 @@ public class Day implements Runnable {
     @Override
     public void run()
     {
+        System.out.println("Day started");
+
         try
         {
             Thread.sleep((int)(duration * 1000));
+            System.out.println("Day ended");
             day.dayEnded();
         }
         catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        System.out.println("Dzionek sie wziol skonczyl");
     }
 }

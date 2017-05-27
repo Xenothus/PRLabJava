@@ -11,7 +11,6 @@ public class DayInfo {
     private DayInfo()
     {
         isLasting = true;
-        System.out.println("DayInfo started");
     }
 
     public static DayInfo getInstance()
