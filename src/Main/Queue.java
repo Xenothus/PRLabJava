@@ -12,12 +12,12 @@ public class Queue {
         list = new LinkedList<>();
     }
 
-    public void push(int val)
+    public synchronized void push(int val)
     {
         list.add(val);
     }
 
-    public int pop()
+    public synchronized int pop()
     {
         int result = 0;
         if (!list.isEmpty())
@@ -29,7 +29,7 @@ public class Queue {
         return result;
     }
 
-    public int getFirst()
+    public synchronized int peek()
     {
         if (!list.isEmpty())
             return list.get(0);
@@ -37,7 +37,7 @@ public class Queue {
         return 0;
     }
 
-    public boolean isEmpty()
+    public synchronized boolean isEmpty()
     {
         return list.isEmpty();
     }

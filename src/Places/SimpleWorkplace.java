@@ -5,17 +5,17 @@ import Main.Queue;
 abstract public class SimpleWorkplace {
 
     protected int productStorage;
-    protected Queue productDemand;
+    protected Queue productDemandList;
     protected boolean isProductStorageOpen;
-
-    protected final Object productDemandLock = new Object();
 
     protected void init()
     {
         productStorage = 0;
-        productDemand = new Queue();
+        productDemandList = new Queue();
         isProductStorageOpen = true;
     }
+
+
 
     protected synchronized int takeProduct(int units)
     {
@@ -24,9 +24,9 @@ abstract public class SimpleWorkplace {
             if (!isProductStorageOpen)
                 return 0;
 
-            if (units > productStorage || !productDemand.isEmpty())
+            if (units > productStorage || !productDemandList.isEmpty())
             {
-                pushProductDemand(units);
+                productDemandList.push(units);
                 wait();
             }
         }
@@ -45,9 +45,9 @@ abstract public class SimpleWorkplace {
     protected synchronized void putProduct(int units)
     {
         productStorage += units;
-        if (productStorage >= getProductDemand())
+        if (productStorage >= productDemandList.peek())
         {
-            productDemand.pop();
+            productDemandList.pop();
             notify();
         }
     }
@@ -66,21 +66,5 @@ abstract public class SimpleWorkplace {
     {
         isProductStorageOpen = false;
         notifyAll();
-    }
-
-    private int getProductDemand()
-    {
-        synchronized (productDemandLock)
-        {
-            return productDemand.getFirst();
-        }
-    }
-
-    private void pushProductDemand(int input)
-    {
-        synchronized (productDemandLock)
-        {
-            productDemand.push(input);
-        }
     }
 }

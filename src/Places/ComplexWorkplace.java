@@ -6,25 +6,27 @@ abstract public class ComplexWorkplace {
 
     protected int product1Storage;
     protected int product2Storage;
-    protected Queue product1Demand;
-    protected Queue product2Demand;
+    protected Queue product1DemandList;
+    protected Queue product2DemandList;
     protected boolean isProduct1StorageOpen;
     protected boolean isProduct2StorageOpen;
 
     protected final Object product1StorageLock = new Object();
     protected final Object product2StorageLock = new Object();
-    protected final Object product1DemandLock = new Object();
-    protected final Object product2DemandLock = new Object();
 
     protected void init()
     {
         product1Storage = 0;
         product2Storage = 0;
-        product1Demand = new Queue();
-        product2Demand = new Queue();
+        product1DemandList = new Queue();
+        product2DemandList = new Queue();
         isProduct1StorageOpen = true;
         isProduct2StorageOpen = true;
     }
+
+
+
+    //TAKE METHODS ------------------------------------------------------
 
     protected int takeProduct1(int units)
     {
@@ -35,9 +37,9 @@ abstract public class ComplexWorkplace {
 
             try
             {
-                if (units > product1Storage || !product1Demand.isEmpty())
+                if (units > product1Storage || !product1DemandList.isEmpty())
                 {
-                    pushProduct1Demand(units);
+                    product1DemandList.push(units);
                     product1StorageLock.wait();
                 }
             }
@@ -54,44 +56,6 @@ abstract public class ComplexWorkplace {
         }
     }
 
-    protected void putProduct1(int units)
-    {
-        synchronized (product1StorageLock)
-        {
-            product1Storage += units;
-            if (product1Storage >= getProduct1Demand())
-            {
-                product1Demand.pop();
-                product1StorageLock.notify();
-            }
-        }
-    }
-
-    protected int getProduct1StorageValue()
-    {
-        synchronized (product1StorageLock)
-        {
-            return product1Storage;
-        }
-    }
-
-    protected void setProduct1StorageValue(int units)
-    {
-        synchronized (product1StorageLock)
-        {
-            product1Storage = units;
-        }
-    }
-
-    protected void closeProduct1Storage()
-    {
-        synchronized (product1StorageLock)
-        {
-            isProduct1StorageOpen = false;
-            product1StorageLock.notifyAll();
-        }
-    }
-    
     protected int takeProduct2(int units)
     {
         synchronized (product2StorageLock)
@@ -101,9 +65,9 @@ abstract public class ComplexWorkplace {
 
             try
             {
-                if (units > product2Storage || !product2Demand.isEmpty())
+                if (units > product2Storage || !product2DemandList.isEmpty())
                 {
-                    pushProduct2Demand(units);
+                    product2DemandList.push(units);
                     product2StorageLock.wait();
                 }
             }
@@ -120,13 +84,42 @@ abstract public class ComplexWorkplace {
         return units;
     }
 
+
+
+    //PUT METHODS ------------------------------------------------------
+
+    protected void putProduct1(int units)
+    {
+        synchronized (product1StorageLock)
+        {
+            product1Storage += units;
+            if (product1Storage >= product1DemandList.peek())
+            {
+                product1DemandList.pop();
+                product1StorageLock.notify();
+            }
+        }
+    }
+
     protected void putProduct2(int units)
     {
         synchronized (product2StorageLock)
         {
             product2Storage += units;
-            if (product2Storage >= getProduct2Demand())
+            if (product2Storage >= product2DemandList.peek())
                 product2StorageLock.notify();
+        }
+    }
+
+
+
+    //GETTER METHODS ------------------------------------------------------
+
+    protected int getProduct1StorageValue()
+    {
+        synchronized (product1StorageLock)
+        {
+            return product1Storage;
         }
     }
 
@@ -138,11 +131,36 @@ abstract public class ComplexWorkplace {
         }
     }
 
+
+
+    //SETTER METHODS ------------------------------------------------------
+
+    protected void setProduct1StorageValue(int units)
+    {
+        synchronized (product1StorageLock)
+        {
+            product1Storage = units;
+        }
+    }
+
     protected void setProduct2StorageValue(int units)
     {
         synchronized (product2StorageLock)
         {
             product2Storage = units;
+        }
+    }
+
+
+
+    //CLOSE STORAGE METHODS ------------------------------------------------------
+
+    protected void closeProduct1Storage()
+    {
+        synchronized (product1StorageLock)
+        {
+            isProduct1StorageOpen = false;
+            product1StorageLock.notifyAll();
         }
     }
 
@@ -154,37 +172,4 @@ abstract public class ComplexWorkplace {
             product2StorageLock.notifyAll();
         }
     }
-
-    protected int getProduct1Demand()
-    {
-        synchronized (product1DemandLock)
-        {
-            return product1Demand.getFirst();
-        }
-    }
-
-    protected void pushProduct1Demand(int input)
-    {
-        synchronized (product1DemandLock)
-        {
-            product1Demand.push(input);
-        }
-    }
-
-    protected int getProduct2Demand()
-    {
-        synchronized (product2DemandLock)
-        {
-            return product2Demand.getFirst();
-        }
-    }
-
-    protected void pushProduct2Demand(int input)
-    {
-        synchronized (product2DemandLock)
-        {
-            product2Demand.push(input);
-        }
-    }
-
 }
