@@ -39,8 +39,8 @@ public class King extends Person {
         while (day.isLasting() && work.isOrdered())
         {
             giveMoralesToArmy();
-            eat();
-            drink();
+            if (!satisfyAllNeeds())
+                break;
 
             happiness = (happiness < 100) ? happiness + happinessStep : 100;
         }

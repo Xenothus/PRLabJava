@@ -47,14 +47,20 @@ public class Weaponsmith extends Person implements Runnable {
         while (day.isLasting() && work.isOrdered())
         {
             forgeWeapons();
-            eat();
-            drink();
+            if (!satisfyAllNeeds())
+                break;
         }
+
+        weaponry.closeWeaponsStorage();
+
+        reportWorkFinished();
     }
 
     private void forgeWeapons()
     {
-        ironworks.takeIronBars(ironBarsDemand);
+       if (ironworks.takeIronBars(ironBarsDemand) == 0)
+           return;
+
         work();
         weaponry.putWeapons(productionAmount);
     }

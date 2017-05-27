@@ -47,14 +47,16 @@ public class Knight extends Person {
         while (day.isLasting() && work.isOrdered())
         {
             growInStrength();
-            eat();
-            drink();
+            if (!satisfyAllNeeds())
+                break;
         }
     }
 
     private void growInStrength()
     {
-        weaponry.takeWeapons(weaponDemand);
+        if (weaponry.takeWeapons(weaponDemand) == 0)
+            return;
+
         work();
         army.putStrength(productionAmount);
     }

@@ -16,6 +16,7 @@ public class Army extends ComplexWorkplace {
         return SingletonHelper.instance;
     }
 
+
     public void setMorales(int units)
     {
         super.setProduct1StorageValue(units);
@@ -25,6 +26,7 @@ public class Army extends ComplexWorkplace {
     {
         return super.getProduct1StorageValue();
     }
+
 
     public void putStrength(int units)
     {

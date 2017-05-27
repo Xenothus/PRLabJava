@@ -16,6 +16,7 @@ public class Weaponry extends SimpleWorkplace {
         return SingletonHelper.instance;
     }
 
+
     public int takeWeapons(int units)
     {
         return super.takeProduct(units);
@@ -24,5 +25,10 @@ public class Weaponry extends SimpleWorkplace {
     public void putWeapons(int units)
     {
         super.putProduct(units);
+    }
+
+    public void closeWeaponsStorage()
+    {
+        super.closeProductStorage();
     }
 }

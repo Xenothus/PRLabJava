@@ -34,8 +34,7 @@ public class War implements Runnable {
         while (true)
         {
             fight();
-            power = (int)(((double)army.getMorales() / 100.0) * (double)army.getStrength());
-            System.out.println("Army power: " + power);
+            System.out.println("Army power: " + countPower());
 
             if (power > enemyPower)
             {
@@ -56,5 +55,10 @@ public class War implements Runnable {
         {
             e.printStackTrace();
         }
+    }
+
+    private int countPower()
+    {
+        return power = (int)(((double)army.getMorales() / 100.0) * (double)army.getStrength());
     }
 }
