@@ -1,8 +1,9 @@
-package People;
+package Workers;
 
-import Places.Mine;
+import Workers.Abstract.Worker;
+import Workplaces.Mine;
 
-public class Miner extends Person {
+public class Miner extends Worker {
 
     private static int ID = 0;
     private final Mine mine = Mine.getInstance();
@@ -44,8 +45,6 @@ public class Miner extends Person {
             collectIronOre();
             if (!satisfyAllNeeds())
                 break;
-
-            System.out.println("One");
         }
 
         mine.closeCoalStorage();

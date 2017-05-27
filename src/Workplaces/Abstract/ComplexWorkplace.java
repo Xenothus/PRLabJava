@@ -1,6 +1,6 @@
-package Places;
+package Workplaces.Abstract;
 
-import Main.Queue;
+import Auxiliary.Queue;
 
 abstract public class ComplexWorkplace {
 

@@ -1,6 +1,7 @@
 package Main;
 
-import People.*;
+import Time.War;
+import Workers.*;
 
 public class MainApp {
 

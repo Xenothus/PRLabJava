@@ -1,9 +1,10 @@
-package People;
+package Workers;
 
-import Places.Army;
-import Places.Weaponry;
+import Workers.Abstract.Worker;
+import Workplaces.Army;
+import Workplaces.Weaponry;
 
-public class Knight extends Person {
+public class Knight extends Worker {
 
     private static int ID = 0;
     private final Army army = Army.getInstance();

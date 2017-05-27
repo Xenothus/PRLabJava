@@ -1,9 +1,10 @@
-package People;
+package Workers;
 
-import Places.Ironworks;
-import Places.Mine;
+import Workers.Abstract.Worker;
+import Workplaces.Ironworks;
+import Workplaces.Mine;
 
-public class IronWorker extends Person {
+public class IronWorker extends Worker {
 
     private static int ID = 0;
     private final Ironworks ironworks = Ironworks.getInstance();
@@ -53,8 +54,6 @@ public class IronWorker extends Person {
             forgeIronBars();
             if (!satisfyAllNeeds())
                 break;
-
-            System.out.println("OK");
         }
 
         ironworks.closeIronBarsStorage();

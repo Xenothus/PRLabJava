@@ -1,9 +1,10 @@
-package People;
+package Workers;
 
-import Places.Weaponry;
-import Places.Ironworks;
+import Workers.Abstract.Worker;
+import Workplaces.Weaponry;
+import Workplaces.Ironworks;
 
-public class Weaponsmith extends Person implements Runnable {
+public class Weaponsmith extends Worker implements Runnable {
 
     private static int ID = 0;
     private Weaponry weaponry = Weaponry.getInstance();

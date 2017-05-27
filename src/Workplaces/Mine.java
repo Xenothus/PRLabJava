@@ -1,4 +1,6 @@
-package Places;
+package Workplaces;
+
+import Workplaces.Abstract.ComplexWorkplace;
 
 public class Mine extends ComplexWorkplace {
 

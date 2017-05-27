@@ -1,8 +1,9 @@
-package People;
+package Workers;
 
-import Places.Well;
+import Workers.Abstract.Worker;
+import Workplaces.Well;
 
-public class WaterCollector extends Person {
+public class WaterCollector extends Worker {
 
     private static int ID = 0;
     private final Well well = Well.getInstance();

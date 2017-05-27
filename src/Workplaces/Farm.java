@@ -1,4 +1,6 @@
-package Places;
+package Workplaces;
+
+import Workplaces.Abstract.ComplexWorkplace;
 
 public class Farm extends ComplexWorkplace {
 

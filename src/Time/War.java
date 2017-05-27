@@ -1,6 +1,6 @@
-package Main;
+package Time;
 
-import Places.Army;
+import Workplaces.Army;
 
 public class War implements Runnable {
 

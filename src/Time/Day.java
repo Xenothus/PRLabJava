@@ -1,4 +1,4 @@
-package Main;
+package Time;
 
 public class Day implements Runnable {
 

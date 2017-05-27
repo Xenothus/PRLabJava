@@ -1,15 +1,15 @@
-package People;
+package Workers.Abstract;
 
-import Main.DayInfo;
-import Main.WorkInfo;
-import Places.Farm;
-import Places.Well;
+import Time.DayInfo;
+import Time.WorkInfo;
+import Workplaces.Farm;
+import Workplaces.Well;
 
-import static Main.DayInfo.getInstance;
+import static Time.DayInfo.getInstance;
 import static java.lang.System.out;
 import static java.lang.Thread.sleep;
 
-abstract public class Person implements Runnable {
+abstract public class Worker implements Runnable {
 
     protected int myID;
     protected final DayInfo day = getInstance();

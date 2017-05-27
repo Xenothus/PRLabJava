@@ -1,8 +1,9 @@
-package People;
+package Workers;
 
-import Places.Farm;
+import Workers.Abstract.Worker;
+import Workplaces.Farm;
 
-public class Farmer extends Person {
+public class Farmer extends Worker {
 
     private static int ID = 0;
     private final Farm farm = Farm.getInstance();

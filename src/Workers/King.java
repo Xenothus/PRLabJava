@@ -1,8 +1,9 @@
-package People;
+package Workers;
 
-import Places.Army;
+import Workers.Abstract.Worker;
+import Workplaces.Army;
 
-public class King extends Person {
+public class King extends Worker {
 
     private final Army army = Army.getInstance();
 

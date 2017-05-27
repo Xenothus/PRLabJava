@@ -1,4 +1,6 @@
-package Places;
+package Workplaces;
+
+import Workplaces.Abstract.SimpleWorkplace;
 
 public class Weaponry extends SimpleWorkplace {
 
