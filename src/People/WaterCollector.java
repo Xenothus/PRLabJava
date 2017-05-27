@@ -38,7 +38,8 @@ public class WaterCollector extends Person {
         while (day.isLasting() && work.isOrdered())
         {
             collectWater();
-            eat();
+            if (!eat())
+                break;
         }
 
         well.closeWaterStorage();

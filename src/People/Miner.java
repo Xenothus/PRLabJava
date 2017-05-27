@@ -38,12 +38,12 @@ public class Miner extends Person {
         while (day.isLasting() && work.isOrdered())
         {
             collectCoal();
-            eat();
-            drink();
+            if (!satisfyAllNeeds())
+                break;
 
             collectIronOre();
-            eat();
-            drink();
+            if (!satisfyAllNeeds())
+                break;
 
             System.out.println("One");
         }

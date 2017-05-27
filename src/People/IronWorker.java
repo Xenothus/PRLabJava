@@ -51,8 +51,8 @@ public class IronWorker extends Person {
         while (day.isLasting() && work.isOrdered())
         {
             forgeIronBars();
-            eat();
-            drink();
+            if (!satisfyAllNeeds())
+                break;
 
             System.out.println("OK");
         }
@@ -64,9 +64,13 @@ public class IronWorker extends Person {
 
     private void forgeIronBars()
     {
-        mine.takeCoal(coalDemand);
-        mine.takeIronOre(ironOreDemand);
+        if (mine.takeCoal(coalDemand) == 0 ||
+            mine.takeIronOre(ironOreDemand) == 0)
+            return;
+
         work();
         ironworks.putIronBars(productionAmount);
     }
+
+    //Pomysł: work zrobic tak, ze moze sie nie udac - zwraca boola, ktorego sprawdza putIronBars
 }

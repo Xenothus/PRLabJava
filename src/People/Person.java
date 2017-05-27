@@ -17,15 +17,29 @@ abstract public class Person implements Runnable {
     protected double productionSpeed;   // in seconds
     protected int productionAmount;     // in units
 
-    protected void eat()
+    protected boolean satisfyAllNeeds()
     {
-        Farm.getInstance().takeCereal(foodConsumption);
-        Farm.getInstance().takePotatoes(foodConsumption);
+        if (eat() && drink())
+            return true;
+
+        return false;
     }
 
-    protected void drink()
+    protected boolean eat()
     {
-        Well.getInstance().takeWater(waterConsumption);
+        if (Farm.getInstance().takeCereal(foodConsumption) != 0 ||
+            Farm.getInstance().takePotatoes(foodConsumption) != 0)
+            return true;
+
+        return false;
+    }
+
+    protected boolean drink()
+    {
+        if (Well.getInstance().takeWater(waterConsumption) != 0)
+            return true;
+
+        return false;
     }
 
     protected void work()

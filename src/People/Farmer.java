@@ -38,7 +38,8 @@ public class Farmer extends Person {
         while (day.isLasting() && work.isOrdered())
         {
             sowPlants();
-            drink();
+            if (!drink())
+                break;
         }
 
         farm.closeCerealStorage();
