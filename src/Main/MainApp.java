@@ -2,15 +2,24 @@ package Main;
 
 import People.*;
 
-import java.util.LinkedList;
-import java.util.List;
-
-
 public class MainApp {
 
     public static void main (String args[])
     {
         System.out.println("Welcome to our Kingdom!");
+
+        new Thread(new King()).start();
+        new Thread(War.getInstance()).start();
+        new Thread(new Knight()).start();
+
+        new Thread(new Farmer()).start();
+        new Thread(new WaterCollector()).start();
+
+        new Thread(new Miner()).start();
+        new Thread(new IronWorker()).start();
+        new Thread(new Weaponsmith()).start();
+
+/*        System.out.println("Welcome to our Kingdom!");
 
         //new Thread(new King()).start();
         //new Thread(War.getInstance()).start();
@@ -23,6 +32,6 @@ public class MainApp {
 
         new Thread(new Miner(1,1,1, 1)).start();
         new Thread(new IronWorker(1,1,1,1,10,10)).start();
-        //new Thread(new Weaponsmith()).start();
+        //new Thread(new Weaponsmith()).start();*/
     }
 }

@@ -17,7 +17,7 @@ public class Knight extends Person {
 
         waterConsumption = 1;
         foodConsumption = 1;
-        productionSpeed = 1;
+        productionDuration = 1;
         productionAmount = 100;
 
         weaponDemand = 1;
@@ -25,7 +25,7 @@ public class Knight extends Person {
 
     public Knight(int waterConsumption,
                   int foodConsumption,
-                  int productionSpeed,
+                  int productionDuration,
                   int productionAmount,
                   int weaponDemand)
     {
@@ -33,7 +33,7 @@ public class Knight extends Person {
 
         this.waterConsumption = waterConsumption;
         this.foodConsumption = foodConsumption;
-        this.productionSpeed = productionSpeed;
+        this.productionDuration = productionDuration;
         this.productionAmount = productionAmount;
 
         this.weaponDemand = weaponDemand;
@@ -50,6 +50,8 @@ public class Knight extends Person {
             if (!satisfyAllNeeds())
                 break;
         }
+
+        reportWorkFinished();
     }
 
     private void growInStrength()

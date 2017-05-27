@@ -13,20 +13,20 @@ public class WaterCollector extends Person {
 
         waterConsumption = 1;
         foodConsumption = 1;
-        productionSpeed = 1;
+        productionDuration = 1;
         productionAmount = 100;
     }
 
     public WaterCollector(int waterConsumption,
                           int foodConsumption,
-                          int productionSpeed,
+                          int productionDuration,
                           int productionAmount)
     {
         myID = ID++;
 
         this.waterConsumption = waterConsumption;
         this.foodConsumption = foodConsumption;
-        this.productionSpeed = productionSpeed;
+        this.productionDuration = productionDuration;
         this.productionAmount = productionAmount;
     }
 

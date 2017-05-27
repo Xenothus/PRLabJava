@@ -17,7 +17,7 @@ public class Weaponsmith extends Person implements Runnable {
 
         waterConsumption = 1;
         foodConsumption = 1;
-        productionSpeed = 1;
+        productionDuration = 1;
         productionAmount = 100;
 
         ironBarsDemand = 1;
@@ -25,7 +25,7 @@ public class Weaponsmith extends Person implements Runnable {
 
     public Weaponsmith(int waterConsumption,
                        int foodConsumption,
-                       int productionSpeed,
+                       int productionDuration,
                        int productionAmount,
                        int ironBarsDemand)
     {
@@ -33,7 +33,7 @@ public class Weaponsmith extends Person implements Runnable {
 
         this.waterConsumption = waterConsumption;
         this.foodConsumption = foodConsumption;
-        this.productionSpeed = productionSpeed;
+        this.productionDuration = productionDuration;
         this.productionAmount = productionAmount;
 
         this.ironBarsDemand = ironBarsDemand;

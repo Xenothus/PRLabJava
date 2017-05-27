@@ -13,7 +13,7 @@ public class King extends Person {
     {
         waterConsumption = 5;
         foodConsumption = 5;
-        productionSpeed = 1;
+        productionDuration = 1;
 
         happiness = 0;
         happinessStep = 1;
@@ -21,11 +21,13 @@ public class King extends Person {
 
     public King(int waterConsumption,
                 int foodConsumption,
+                int productionDuration,
                 int initialHappiness,
                 int happinessPerLoop)
     {
         this.waterConsumption = waterConsumption;
         this.foodConsumption = foodConsumption;
+        this.productionDuration = productionDuration;
 
         this.happiness = initialHappiness;
         this.happinessStep = happinessPerLoop;
@@ -44,6 +46,8 @@ public class King extends Person {
 
             happiness = (happiness < 100) ? happiness + happinessStep : 100;
         }
+
+        reportWorkFinished();
     }
 
     private void giveMoralesToArmy()
