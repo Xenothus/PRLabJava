@@ -16,10 +16,10 @@ public class Knight extends Worker {
     {
         myID = ID++;
 
-        waterConsumption = 1;
-        foodConsumption = 1;
+        waterConsumption = 3;
+        foodConsumption = 3;
         productionDuration = 1;
-        productionAmount = 100;
+        productionAmount = 10;
 
         weaponDemand = 1;
     }

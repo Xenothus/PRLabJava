@@ -16,12 +16,12 @@ public class Weaponsmith extends Worker implements Runnable {
     {
         myID = ID++;
 
-        waterConsumption = 1;
-        foodConsumption = 1;
+        waterConsumption = 2;
+        foodConsumption = 2;
         productionDuration = 1;
-        productionAmount = 100;
+        productionAmount = 5;
 
-        ironBarsDemand = 1;
+        ironBarsDemand = 5;
     }
 
     public Weaponsmith(int waterConsumption,

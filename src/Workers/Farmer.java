@@ -15,7 +15,7 @@ public class Farmer extends Worker {
         waterConsumption = 1;
         foodConsumption = 1;
         productionDuration = 1;
-        productionAmount = 100;
+        productionAmount = 15;
     }
 
     public Farmer(int waterConsumption,

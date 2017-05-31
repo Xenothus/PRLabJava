@@ -15,7 +15,7 @@ public class Miner extends Worker {
         waterConsumption = 2;
         foodConsumption = 2;
         productionDuration = 1;
-        productionAmount = 100;
+        productionAmount = 5;
     }
 
     public Miner(int waterConsumption,

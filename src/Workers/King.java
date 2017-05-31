@@ -16,7 +16,7 @@ public class King extends Worker {
         foodConsumption = 5;
         productionDuration = 1;
 
-        happiness = 0;
+        happiness = 50;
         happinessStep = 1;
     }
 

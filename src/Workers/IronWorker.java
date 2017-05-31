@@ -20,10 +20,10 @@ public class IronWorker extends Worker {
         waterConsumption = 1;
         foodConsumption = 1;
         productionDuration = 1;
-        productionAmount = 100;
+        productionAmount = 10;
 
-        coalDemand = 1;
-        ironOreDemand = 1;
+        coalDemand = 10;
+        ironOreDemand = 10;
     }
 
     public IronWorker(int waterConsumption,
