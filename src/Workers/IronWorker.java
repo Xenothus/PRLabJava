@@ -70,6 +70,4 @@ public class IronWorker extends Worker {
         work();
         ironworks.putIronBars(productionAmount);
     }
-
-    //Pomysł: work zrobic tak, ze moze sie nie udac - zwraca boola, ktorego sprawdza putIronBars
 }

@@ -54,8 +54,7 @@ abstract public class ComplexWorkplace {
                 return 0;
 
             product1Storage -= units;
-            System.out.println(getClass().getSimpleName() + "\t\t" + product1Name + "\t\t" +
-                    " OUT: " + units + "\t" + " CURRENT: " + product1Storage);
+            reportStorageState(1, 'O', units);
             return units;
         }
     }
@@ -85,8 +84,7 @@ abstract public class ComplexWorkplace {
             return 0;
 
         product2Storage -= units;
-        System.out.println(getClass().getSimpleName() + "\t\t" + product2Name + "\t\t" +
-                " OUT: " + units + "\t" + " CURRENT: " + product2Storage);
+        reportStorageState(2, 'O', units);
         return units;
     }
 
@@ -99,8 +97,7 @@ abstract public class ComplexWorkplace {
         synchronized (product1StorageLock)
         {
             product1Storage += units;
-            System.out.println(getClass().getSimpleName() + "\t\t" + product1Name + "\t\t" +
-                    " IN: " + units + "\t" + " CURRENT: " + product1Storage);
+            reportStorageState(1, 'I', units);
             if (product1Storage >= product1DemandList.peek())
             {
                 product1DemandList.pop();
@@ -114,8 +111,7 @@ abstract public class ComplexWorkplace {
         synchronized (product2StorageLock)
         {
             product2Storage += units;
-            System.out.println(getClass().getSimpleName() + "\t\t" + product2Name + "\t\t" +
-                    " IN: " + units + "\t" + " CURRENT: " + product2Storage);
+            reportStorageState(2, 'I', units);
             if (product2Storage >= product2DemandList.peek())
                 product2StorageLock.notify();
         }
@@ -194,18 +190,18 @@ abstract public class ComplexWorkplace {
         String name = getClass().getSimpleName();
         sb.append(name);
         sb.append("\t");
-        if (name.length() >= 8)
+        if (name.length() < 8)
             sb.append("\t");
 
         String productName = (productNum == 1) ? product1Name : product2Name;
         sb.append(productName);
         sb.append("\t");
-        if (productName.length() >= 8)
+        if (productName.length() < 8)
             sb.append("\t");
 
         sb.append(IO == 'I' ? "IN: " : "OUT: ");
         sb.append(units);
-        sb.append("\t");
+        sb.append("\t\t");
 
         sb.append("CURRENT: ");
         sb.append((productNum == 1) ? product1Storage : product2Storage);

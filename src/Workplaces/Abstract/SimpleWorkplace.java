@@ -40,16 +40,14 @@ abstract public class SimpleWorkplace {
             return 0;
 
         productStorage -= units;
-        System.out.println(getClass().getSimpleName() + "\t\t" + productName + "\t\t" +
-                " OUT: " + units + "\t" + " CURRENT: " + productStorage);
+        reportStorageState('O', units);
         return units;
     }
 
     protected synchronized void putProduct(int units)
     {
         productStorage += units;
-        System.out.println(getClass().getSimpleName() + "\t\t" + productName + "\t\t" +
-                " IN: " + units + "\t" + " CURRENT: " + productStorage);
+        reportStorageState('I', units);
         if (productStorage >= productDemandList.peek())
         {
             productDemandList.pop();
@@ -71,5 +69,30 @@ abstract public class SimpleWorkplace {
     {
         isProductStorageOpen = false;
         notifyAll();
+    }
+
+    private void reportStorageState(char IO, int units)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        String name = getClass().getSimpleName();
+        sb.append(name);
+        sb.append("\t");
+        if (name.length() < 8)
+            sb.append("\t");
+
+        sb.append(productName);
+        sb.append("\t");
+        if (productName.length() < 8)
+            sb.append("\t");
+
+        sb.append(IO == 'I' ? "IN: " : "OUT: ");
+        sb.append(units);
+        sb.append("\t\t");
+
+        sb.append("CURRENT: ");
+        sb.append(productStorage);
+
+        System.out.println(sb.toString());
     }
 }
