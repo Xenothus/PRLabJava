@@ -11,6 +11,7 @@ public class Weaponry extends SimpleWorkplace {
     private Weaponry()
     {
         super.init();
+        productName = "Weapons";
     }
 
     public static Weaponry getInstance()

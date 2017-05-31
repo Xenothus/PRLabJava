@@ -11,6 +11,8 @@ public class Farm extends ComplexWorkplace {
     private Farm()
     {
         super.init();
+        product1Name = "Cereal";
+        product2Name = "Potatoes";
     }
 
     public static Farm getInstance()

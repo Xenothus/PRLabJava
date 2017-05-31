@@ -11,6 +11,7 @@ public class Ironworks extends SimpleWorkplace {
     private Ironworks()
     {
         super.init();
+        productName = "Iron Bars";
     }
 
     public static Ironworks getInstance()

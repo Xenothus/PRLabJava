@@ -11,6 +11,8 @@ public class Mine extends ComplexWorkplace {
     private Mine()
     {
         super.init();
+        product1Name = "Coal";
+        product2Name = "Iron Ore";
     }
 
     public static Mine getInstance()

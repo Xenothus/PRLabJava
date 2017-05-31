@@ -11,6 +11,8 @@ public class Army extends ComplexWorkplace {
     private Army()
     {
         super.init();
+        product1Name = "Morales";
+        product2Name = "Strength";
     }
 
     public static Army getInstance()

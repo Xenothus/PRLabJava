@@ -11,6 +11,7 @@ public class Well extends SimpleWorkplace {
     private Well()
     {
         super.init();
+        productName = "Water";
     }
 
     public static Well getInstance()

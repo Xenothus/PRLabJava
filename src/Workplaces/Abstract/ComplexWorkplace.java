@@ -4,6 +4,8 @@ import Auxiliary.Queue;
 
 abstract public class ComplexWorkplace {
 
+    protected String product1Name;
+    protected String product2Name;
     protected int product1Storage;
     protected int product2Storage;
     protected Queue product1DemandList;
@@ -52,6 +54,8 @@ abstract public class ComplexWorkplace {
                 return 0;
 
             product1Storage -= units;
+            System.out.println(getClass().getSimpleName() + "\t\t" + product1Name + "\t\t" +
+                    " OUT: " + units + "\t" + " CURRENT: " + product1Storage);
             return units;
         }
     }
@@ -81,6 +85,8 @@ abstract public class ComplexWorkplace {
             return 0;
 
         product2Storage -= units;
+        System.out.println(getClass().getSimpleName() + "\t\t" + product2Name + "\t\t" +
+                " OUT: " + units + "\t" + " CURRENT: " + product2Storage);
         return units;
     }
 
@@ -93,6 +99,8 @@ abstract public class ComplexWorkplace {
         synchronized (product1StorageLock)
         {
             product1Storage += units;
+            System.out.println(getClass().getSimpleName() + "\t\t" + product1Name + "\t\t" +
+                    " IN: " + units + "\t" + " CURRENT: " + product1Storage);
             if (product1Storage >= product1DemandList.peek())
             {
                 product1DemandList.pop();
@@ -106,6 +114,8 @@ abstract public class ComplexWorkplace {
         synchronized (product2StorageLock)
         {
             product2Storage += units;
+            System.out.println(getClass().getSimpleName() + "\t\t" + product2Name + "\t\t" +
+                    " IN: " + units + "\t" + " CURRENT: " + product2Storage);
             if (product2Storage >= product2DemandList.peek())
                 product2StorageLock.notify();
         }
@@ -171,5 +181,35 @@ abstract public class ComplexWorkplace {
             isProduct2StorageOpen = false;
             product2StorageLock.notifyAll();
         }
+    }
+
+
+
+    //OUTPUT METHODS -------------------------------------------------------------
+
+    private void reportStorageState(int productNum, char IO, int units)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        String name = getClass().getSimpleName();
+        sb.append(name);
+        sb.append("\t");
+        if (name.length() >= 8)
+            sb.append("\t");
+
+        String productName = (productNum == 1) ? product1Name : product2Name;
+        sb.append(productName);
+        sb.append("\t");
+        if (productName.length() >= 8)
+            sb.append("\t");
+
+        sb.append(IO == 'I' ? "IN: " : "OUT: ");
+        sb.append(units);
+        sb.append("\t");
+
+        sb.append("CURRENT: ");
+        sb.append((productNum == 1) ? product1Storage : product2Storage);
+
+        System.out.println(sb.toString());
     }
 }

@@ -16,7 +16,7 @@ public class War implements Runnable {
 
     private War()
     {
-        battleDuration = 0.5;
+        battleDuration = 1;
         power = 0;
         enemyPower = 100;
     }

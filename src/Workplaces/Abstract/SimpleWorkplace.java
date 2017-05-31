@@ -4,6 +4,7 @@ import Auxiliary.Queue;
 
 abstract public class SimpleWorkplace {
 
+    protected String productName;
     protected int productStorage;
     protected Queue productDemandList;
     protected boolean isProductStorageOpen;
@@ -39,12 +40,16 @@ abstract public class SimpleWorkplace {
             return 0;
 
         productStorage -= units;
+        System.out.println(getClass().getSimpleName() + "\t\t" + productName + "\t\t" +
+                " OUT: " + units + "\t" + " CURRENT: " + productStorage);
         return units;
     }
 
     protected synchronized void putProduct(int units)
     {
         productStorage += units;
+        System.out.println(getClass().getSimpleName() + "\t\t" + productName + "\t\t" +
+                " IN: " + units + "\t" + " CURRENT: " + productStorage);
         if (productStorage >= productDemandList.peek())
         {
             productDemandList.pop();
